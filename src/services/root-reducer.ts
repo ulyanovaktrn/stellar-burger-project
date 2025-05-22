@@ -3,12 +3,14 @@ import {
   IngredientsSlice,
   BurgerConstructorSlice,
   OrdersSlice,
-  UserSlice
+  UserSlice,
+  FeedSlice
 } from '@slices';
 
 export const RootReducer = combineReducers({
   ingredients: IngredientsSlice.reducer,
   'burger-constructor': BurgerConstructorSlice.reducer,
   orders: OrdersSlice.reducer,
-  user: UserSlice.reducer
+  user: UserSlice.reducer,
+  'feed-orders': FeedSlice.reducer
 });
