@@ -1,4 +1,12 @@
 import { RootState } from './store';
-import { ingredientsSlice } from './slices/ingredients-slice';
+import {
+  IngredientsSlice,
+  BurgerConstructorSlice,
+  OrdersSlice,
+  UserSlice
+} from '@slices';
 
-export const ingredientsSelector = ingredientsSlice.selectors;
+export const IngredientsSelectors = IngredientsSlice.selectors;
+export const BurgerConstructorSelectors = BurgerConstructorSlice.selectors;
+export const OrdersSelectors = OrdersSlice.selectors;
+export const UserSelectors = UserSlice.selectors;

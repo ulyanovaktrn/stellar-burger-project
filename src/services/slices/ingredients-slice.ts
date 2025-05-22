@@ -17,7 +17,7 @@ export const initialState: TIngredientsSliceState = {
   error: null
 };
 
-export const ingredientsSlice = createSlice({
+export const IngredientsSlice = createSlice({
   name: 'ingredients',
   initialState,
   reducers: {},
