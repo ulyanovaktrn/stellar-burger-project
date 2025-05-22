@@ -41,3 +41,8 @@ export type TUser = {
 
 export type TFromLocation = { from: string, background?: Location<TFromLocation> };
 export type TTabMode = 'bun' | 'sauce' | 'main';
+
+export type TThunkSliceState = {
+  isLoading: boolean;
+  error: string | null;
+};

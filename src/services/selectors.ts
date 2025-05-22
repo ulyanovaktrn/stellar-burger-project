@@ -1,4 +1,4 @@
-import {TIngredient} from "../utils/types";
-import {RootState} from "./store";
+import { RootState } from './store';
+import { ingredientsSlice } from './slices/ingredients-slice';
 
-//export const isAuthCheckedSelector = (store: RootState) => store.auth.isAuthChecked;
+export const ingredientsSelector = ingredientsSlice.selectors;
