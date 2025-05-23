@@ -46,3 +46,8 @@ export const FeedSlice = createSlice({
     selectError: (state) => state.error
   }
 });
+
+export const FeedActions = {
+  ...FeedSlice.actions,
+  getFeedsThunk
+};

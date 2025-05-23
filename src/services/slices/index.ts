@@ -6,4 +6,4 @@ export { IngredientsSlice, IngredientsActions } from './ingredients-slice';
 export { OrdersSlice, OrdersActions } from './orders-slice';
 export { UserSlice, UserActions } from './user-slice';
 export { UserOrdersSlice, UserOrdersActions } from './user-orders-slice';
-export { FeedSlice } from './feed-slice';
+export { FeedSlice, FeedActions } from './feed-slice';
