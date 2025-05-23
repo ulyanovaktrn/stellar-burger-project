@@ -6,7 +6,6 @@ import { IngredientDetailsUI } from '../ui/ingredient-details';
 import { useSelector } from '../../services/store';
 
 export const IngredientDetails: FC = () => {
-  /** TODO: взять переменную из стора */
   const ingredients = useSelector(IngredientsSelectors.selectIngredients);
   const { id } = useParams<{ id: string }>();
   const ingredientData = ingredients.find(
