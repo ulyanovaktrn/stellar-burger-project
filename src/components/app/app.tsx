@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   ConstructorPage,
   Feed,
@@ -9,6 +10,8 @@ import {
   Profile,
   ProfileOrders
 } from '@pages';
+import { IngredientsActions, UserActions } from '@slices';
+import { useDispatch } from '../../services/store';
 import '../../index.css';
 import styles from './app.module.css';
 import {
@@ -16,7 +19,8 @@ import {
   Route,
   Routes,
   useLocation,
-  useNavigate
+  useNavigate,
+  useMatch
 } from 'react-router-dom';
 import { AppHeader, Modal, IngredientDetails, OrderInfo } from '@components';
 import { ProtectedRoute } from '../protected-route/protected-route';
@@ -26,6 +30,17 @@ const App = () => {
   const location: Location<TFromLocation> = useLocation();
   const background = location.state && location.state.background;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const feedMatch = useMatch('/feed/:number')?.params.number;
+  const profileOrdersMatch = useMatch('/profile/orders/:number')?.params.number;
+  const orderNum = feedMatch || profileOrdersMatch;
+
+  useEffect(() => {
+    dispatch(IngredientsActions.getIngredientsThunk());
+    dispatch(UserActions.getUserThunk()).finally(() => {
+      dispatch(UserActions.authCheck());
+    });
+  }, []);
 
   return (
     <div className={styles.app}>

@@ -56,7 +56,7 @@ export const UserSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    userCheck: (state) => {
+    authCheck: (state) => {
       state.isAuthChecked = true;
     }
   },
@@ -98,3 +98,12 @@ export const UserSlice = createSlice({
     selectError: (state) => state.error
   }
 });
+
+export const UserActions = {
+  ...UserSlice.actions,
+  getRegisterUserThunk,
+  getLoginUserThunk,
+  getLogoutUserThunk,
+  getUserThunk,
+  getUpdateUserThunk
+};

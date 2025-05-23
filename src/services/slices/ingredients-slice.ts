@@ -42,3 +42,8 @@ export const IngredientsSlice = createSlice({
     selectError: (state) => state.error
   }
 });
+
+export const IngredientsActions = {
+  ...IngredientsSlice.actions,
+  getIngredientsThunk
+};
