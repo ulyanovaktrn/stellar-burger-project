@@ -3,7 +3,7 @@ import { TOrdersData, TThunkSliceState } from '@utils-types';
 import { getFeedsApi } from '@api';
 
 export const getFeedsThunk = createAsyncThunk<TOrdersData>(
-  'feedOrders/getFeeds',
+  'feed-orders/getFeeds',
   getFeedsApi
 );
 
