@@ -15,39 +15,39 @@ import {
   logoutApi
 } from '@api';
 
-export const fetchRegisterUserThunk = createAsyncThunk<
+export const getRegisterUserThunk = createAsyncThunk<
   { user: TUser },
   TRegisterData
->('user/fetchRegisterUser', registerUserApi);
+>('user/getRegisterUser', registerUserApi);
 
-export const fetchLoginUserThunk = createAsyncThunk<
-  { user: TUser },
-  TLoginData
->('user/fetchLoginUser', loginUserApi);
+export const getLoginUserThunk = createAsyncThunk<{ user: TUser }, TLoginData>(
+  'user/getLoginUser',
+  loginUserApi
+);
 
-export const fetchUserThunk = createAsyncThunk<{ user: TUser }>(
-  'user/fetchUser',
+export const getUserThunk = createAsyncThunk<{ user: TUser }>(
+  'user/getUser',
   getUserApi
 );
 
-export const fetchUpdateUserThunk = createAsyncThunk<
+export const getUpdateUserThunk = createAsyncThunk<
   { user: TUser },
   Partial<TRegisterData>
->('user/fetchUpdateUser', updateUserApi);
+>('user/getUpdateUser', updateUserApi);
 
-export const fetchLogoutUserThunk = createAsyncThunk(
-  'user/fetchLogoutUser',
+export const getLogoutUserThunk = createAsyncThunk(
+  'user/getLogoutUser',
   logoutApi
 );
 
 export type TUserSliceState = TThunkSliceState & {
   user: TUser | null;
-  isUserChecked: boolean;
+  isAuthChecked: boolean;
 };
 
 export const initialState: TUserSliceState = {
   user: null,
-  isUserChecked: false,
+  isAuthChecked: false,
   isLoading: false,
   error: null
 };
@@ -57,28 +57,28 @@ export const UserSlice = createSlice({
   initialState,
   reducers: {
     userCheck: (state) => {
-      state.isUserChecked = true;
+      state.isAuthChecked = true;
     }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchRegisterUserThunk.fulfilled, (state, action) => {
+      .addCase(getRegisterUserThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload.user;
       })
-      .addCase(fetchLoginUserThunk.fulfilled, (state, action) => {
+      .addCase(getLoginUserThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload.user;
       })
-      .addCase(fetchUserThunk.fulfilled, (state, action) => {
+      .addCase(getUserThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload.user;
       })
-      .addCase(fetchUpdateUserThunk.fulfilled, (state, action) => {
+      .addCase(getUpdateUserThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload.user;
       })
-      .addCase(fetchLogoutUserThunk.fulfilled, (state) => {
+      .addCase(getLogoutUserThunk.fulfilled, (state) => {
         state.isLoading = false;
         state.user = null;
       })
@@ -93,7 +93,7 @@ export const UserSlice = createSlice({
   },
   selectors: {
     selectUser: (state) => state.user,
-    selectIsUserChecked: (state) => state.isUserChecked,
+    selectIsAuthChecked: (state) => state.isAuthChecked,
     selectIsLoading: (state) => state.isLoading,
     selectError: (state) => state.error
   }

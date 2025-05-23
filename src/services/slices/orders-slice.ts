@@ -2,15 +2,15 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrder, TThunkSliceState } from '@utils-types';
 import { orderBurgerApi, getOrderByNumberApi } from '@api';
 
-export const fetchOrderByNumberThunk = createAsyncThunk<
+export const getOrderByNumberThunk = createAsyncThunk<
   { orders: TOrder[] },
   number
->('orders/fetchOrderByNumber', getOrderByNumberApi);
+>('orders/getOrderByNumber', getOrderByNumberApi);
 
-export const fetchOrderBurgerThunk = createAsyncThunk<
+export const getOrderBurgerThunk = createAsyncThunk<
   { order: TOrder },
   string[]
->('orders/fetchOrderBurger', orderBurgerApi);
+>('orders/getOrderBurger', orderBurgerApi);
 
 export type TOrdersSliceState = TThunkSliceState & {
   previewOrder: TOrder | null;
@@ -34,28 +34,28 @@ export const OrdersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchOrderByNumberThunk.pending, (state) => {
+      .addCase(getOrderByNumberThunk.pending, (state) => {
         state.isLoading = true;
         state.previewOrder = null;
         state.error = null;
       })
-      .addCase(fetchOrderByNumberThunk.rejected, (state, action) => {
+      .addCase(getOrderByNumberThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || null;
       })
-      .addCase(fetchOrderByNumberThunk.fulfilled, (state, action) => {
+      .addCase(getOrderByNumberThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.previewOrder = action.payload.orders[0];
       })
-      .addCase(fetchOrderBurgerThunk.pending, (state) => {
+      .addCase(getOrderBurgerThunk.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(fetchOrderBurgerThunk.rejected, (state, action) => {
+      .addCase(getOrderBurgerThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || null;
       })
-      .addCase(fetchOrderBurgerThunk.fulfilled, (state, action) => {
+      .addCase(getOrderBurgerThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.newOrder = action.payload.order;
       });
@@ -67,3 +67,9 @@ export const OrdersSlice = createSlice({
     selectError: (state) => state.error
   }
 });
+
+export const OrdersActions = {
+  ...OrdersSlice.actions,
+  getOrderByNumberThunk,
+  getOrderBurgerThunk
+};

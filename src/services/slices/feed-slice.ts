@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrdersData, TThunkSliceState } from '@utils-types';
 import { getFeedsApi } from '@api';
 
-export const fetchFeedsThunk = createAsyncThunk<TOrdersData>(
-  'feedOrders/fetchFeeds',
+export const getFeedsThunk = createAsyncThunk<TOrdersData>(
+  'feedOrders/getFeeds',
   getFeedsApi
 );
 
@@ -23,15 +23,15 @@ export const FeedSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFeedsThunk.pending, (state) => {
+      .addCase(getFeedsThunk.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(fetchFeedsThunk.rejected, (state, action) => {
+      .addCase(getFeedsThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || null;
       })
-      .addCase(fetchFeedsThunk.fulfilled, (state, action) => {
+      .addCase(getFeedsThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.orders = action.payload.orders;
         state.total = action.payload.total;

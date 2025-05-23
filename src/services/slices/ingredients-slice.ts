@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TIngredient, TThunkSliceState } from '@utils-types';
 import { getIngredientsApi } from '@api';
 
-export const fetchIngredientsThunk = createAsyncThunk<TIngredient[]>(
-  'ingredients/fetchIngredients',
+export const getIngredientsThunk = createAsyncThunk<TIngredient[]>(
+  'ingredients/getIngredients',
   getIngredientsApi
 );
 
@@ -23,15 +23,15 @@ export const IngredientsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchIngredientsThunk.pending, (state) => {
+      .addCase(getIngredientsThunk.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(fetchIngredientsThunk.rejected, (state, action) => {
+      .addCase(getIngredientsThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || null;
       })
-      .addCase(fetchIngredientsThunk.fulfilled, (state, action) => {
+      .addCase(getIngredientsThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.ingredients = action.payload;
       });

@@ -44,3 +44,7 @@ export const BurgerConstructorSlice = createSlice({
     selectIngredients: (state) => state
   }
 });
+
+export const BurgerConstructorActions = {
+  ...BurgerConstructorSlice.actions
+};
