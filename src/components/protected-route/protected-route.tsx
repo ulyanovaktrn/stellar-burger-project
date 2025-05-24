@@ -7,19 +7,19 @@ import { ProtectedRouteProps } from './type';
 
 export const ProtectedRoute: FC<ProtectedRouteProps> = ({
   children,
-  forAuth
+  withoutAuth
 }) => {
   const isAuth = useSelector(UserSelectors.selectIsAuth);
   const user = useSelector(UserSelectors.selectUser);
   const location = useLocation();
-
+  //console.log(`FOR AUTH ${forAuth}`);
   if (!isAuth) return <Preloader />;
 
-  if (forAuth && !user) {
+  if (!withoutAuth && !user) {
     return <Navigate replace to='/login' state={{ from: location }} />;
   }
 
-  if (!forAuth && user) {
+  if (withoutAuth && user) {
     const from = location.state?.from || { pathname: '/' };
     return (
       <Navigate

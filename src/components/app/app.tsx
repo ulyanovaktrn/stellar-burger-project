@@ -53,23 +53,24 @@ const App = () => {
         <Route path='/feed/:number' element={<OrderInfo />} />
         <Route path='/ingredients/:id' element={<IngredientDetails />} />
         <Route
-          path='login'
+          path='/login'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute withoutAuth>
               <Login />
             </ProtectedRoute>
           }
         />
         <Route
-          path='register'
+          path='/register'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute withoutAuth>
               <Register />
             </ProtectedRoute>
           }
         />
+        {/* <Route path='/register' element={<Register />} /> */}
         <Route
-          path='forgot-password'
+          path='/forgot-password'
           element={
             <ProtectedRoute>
               <ForgotPassword />
@@ -77,7 +78,7 @@ const App = () => {
           }
         />
         <Route
-          path='reset-password'
+          path='/reset-password'
           element={
             <ProtectedRoute>
               <ResetPassword />
@@ -85,17 +86,17 @@ const App = () => {
           }
         />
         <Route
-          path='profile'
+          path='/profile'
           element={
-            <ProtectedRoute forAuth>
+            <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
           }
         />
         <Route
-          path='profile/orders'
+          path='/profile/orders'
           element={
-            <ProtectedRoute forAuth>
+            <ProtectedRoute>
               <ProfileOrders />
             </ProtectedRoute>
           }
@@ -103,7 +104,7 @@ const App = () => {
         <Route
           path='/profile/orders/:number'
           element={
-            <ProtectedRoute forAuth>
+            <ProtectedRoute>
               <OrderInfo />
             </ProtectedRoute>
           }
@@ -131,7 +132,7 @@ const App = () => {
           <Route
             path='/profile/orders/:number'
             element={
-              <ProtectedRoute forAuth>
+              <ProtectedRoute>
                 <Modal title={'Информация заказа'} onClose={handleModalClose}>
                   <OrderInfo />
                 </Modal>
