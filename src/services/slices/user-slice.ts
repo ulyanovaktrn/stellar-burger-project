@@ -93,7 +93,7 @@ export const UserSlice = createSlice({
   },
   selectors: {
     selectUser: (state) => state.user,
-    selectIsAuthChecked: (state) => state.isAuthChecked,
+    selectIsAuth: (state) => state.isAuthChecked,
     selectIsLoading: (state) => state.isLoading,
     selectError: (state) => state.error
   }

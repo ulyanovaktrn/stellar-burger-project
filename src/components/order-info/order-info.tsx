@@ -5,23 +5,19 @@ import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
 import { useSelector, useDispatch } from '../../services/store';
 import { OrdersActions } from '@slices';
-import {
-  IngredientsSelectors,
-  OrdersSelectors,
-  OrderInfoSelector
-} from '@selectors';
+import { IngredientsSelectors, OrderInfoSelector } from '@selectors';
 
 export const OrderInfo: FC = () => {
   const ingredients: TIngredient[] = useSelector(
     IngredientsSelectors.selectIngredients
   );
   const dispatch = useDispatch();
-  const orderNum = useParams<{ num: string }>().num || '';
-  const orderData = useSelector(OrderInfoSelector(orderNum));
-
+  const number = useParams<{ number: string }>().number || '';
+  const orderData = useSelector(OrderInfoSelector(number));
+  // console.log(`ORDER_DATA: ${orderData} ORDER_NUM: ${number}`);
   useEffect(() => {
     if (!orderData) {
-      dispatch(OrdersActions.getOrderByNumberThunk(Number(orderNum)));
+      dispatch(OrdersActions.getOrderByNumberThunk(Number(number)));
     }
   }, [orderData]);
 

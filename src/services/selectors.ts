@@ -20,6 +20,13 @@ export const OrderInfoSelector = (number: string) => (state: RootState) => {
     );
     if (order) return order;
   }
+  if (state['user-orders'].orders.length) {
+    const order = state['user-orders'].orders.find(
+      (order) => order.number === Number(number)
+    );
+
+    if (order) return order;
+  }
   if (state.orders.previewOrder?.number === Number(number)) {
     return state.orders.previewOrder;
   }
