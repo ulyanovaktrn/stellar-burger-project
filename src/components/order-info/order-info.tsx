@@ -14,7 +14,7 @@ export const OrderInfo: FC = () => {
   const dispatch = useDispatch();
   const number = useParams<{ number: string }>().number || '';
   const orderData = useSelector(OrderInfoSelector(number));
-  // console.log(`ORDER_DATA: ${orderData} ORDER_NUM: ${number}`);
+
   useEffect(() => {
     if (!orderData) {
       dispatch(OrdersActions.getOrderByNumberThunk(Number(number)));
