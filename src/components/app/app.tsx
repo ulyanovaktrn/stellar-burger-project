@@ -31,9 +31,9 @@ const App = () => {
   const background = location.state && location.state.background;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //const feedMatch = useMatch('/feed/:number')?.params.number;
-  //const profileOrdersMatch = useMatch('/profile/orders/:number')?.params.number;
-  //const orderNum = feedMatch || profileOrdersMatch;
+  const feedNum = useMatch('/feed/:number')?.params.number;
+  const profileOrderNum = useMatch('/profile/orders/:number')?.params.number;
+  const orderNum = feedNum || profileOrderNum;
 
   useEffect(() => {
     dispatch(IngredientsActions.getIngredientsThunk());
@@ -123,7 +123,11 @@ const App = () => {
           <Route
             path='/feed/:number'
             element={
-              <Modal title={'Информация заказа'} onClose={handleModalClose}>
+              <Modal
+                title={`#${orderNum}`}
+                onClose={handleModalClose}
+                titleClassName='text_type_digits-default'
+              >
                 <OrderInfo />
               </Modal>
             }
@@ -132,7 +136,11 @@ const App = () => {
             path='/profile/orders/:number'
             element={
               <ProtectedRoute>
-                <Modal title={'Информация заказа'} onClose={handleModalClose}>
+                <Modal
+                  title={`#${orderNum}`}
+                  onClose={handleModalClose}
+                  titleClassName='text_type_digits-default'
+                >
                   <OrderInfo />
                 </Modal>
               </ProtectedRoute>
