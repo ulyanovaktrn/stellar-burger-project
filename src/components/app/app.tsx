@@ -68,11 +68,10 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        {/* <Route path='/register' element={<Register />} /> */}
         <Route
           path='/forgot-password'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute withoutAuth>
               <ForgotPassword />
             </ProtectedRoute>
           }
@@ -80,7 +79,7 @@ const App = () => {
         <Route
           path='/reset-password'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute withoutAuth>
               <ResetPassword />
             </ProtectedRoute>
           }
