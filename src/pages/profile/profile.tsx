@@ -33,13 +33,13 @@ export const Profile: FC = () => {
     const newValues: Partial<TRegisterData> = {};
     if (isNameChanged) {
       if (!formValue.name) {
-        setErrMsg('Необходимо ввести имя');
+        setErrMsg('Enter your name');
         return;
       } else newValues.name = formValue.name;
     }
     if (isEmailChanged) {
       if (!formValue.email) {
-        setErrMsg('Необходимо ввести email');
+        setErrMsg('Enter your email');
         return;
       } else newValues.email = formValue.email;
     }

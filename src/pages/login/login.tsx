@@ -16,7 +16,7 @@ export const Login: FC = () => {
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     if (!email || !password) {
-      setErrMsg('Все поля должны быть заполнены');
+      setErrMsg('Fill up all the required fields');
       return;
     }
     setErrMsg(null);

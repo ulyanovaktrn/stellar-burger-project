@@ -17,7 +17,7 @@ export const Register: FC = () => {
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     if (!email || !userName || !password) {
-      setErrMsg('Все поля должны быть заполнены');
+      setErrMsg('Fill up all the required fields');
       return;
     }
     setErrMsg(null);
