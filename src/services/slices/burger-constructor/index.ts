@@ -1,1 +1,5 @@
-export { BurgerConstructorSlice, BurgerConstructorActions, initialState as burgerConstructorInitialState } from './slice';
+export {
+  BurgerConstructorSlice,
+  BurgerConstructorActions,
+  initialState as burgerConstructorInitialState
+} from './slice';

@@ -22,7 +22,7 @@ describe('BurgerConstructorSlice: тесты редьюсеров', () => {
     bun: { ...ingredientsMock[0], id: '4' }
   };
 
-  test('[#1] добавление main/sauce', () => {
+  test('[#1] добавление начинки', () => {
     const expectedState: TConstructorBurgerSliceState = {
       ...initialState,
       ingredients: [
