@@ -35,3 +35,11 @@
   align-items: center;
   margin: 0 auto;
 }
+
+.icon {
+  fill: var(--text-inactive-color);
+}
+
+.icon_active {
+  fill: var(--text-primary-color);
+}

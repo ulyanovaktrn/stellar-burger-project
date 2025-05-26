@@ -6,11 +6,13 @@ import commonStyles from '../common.module.css';
 
 import { ProfileUIProps } from './type';
 import { ProfileMenu } from '@components';
+import { Preloader } from '@ui';
 
 export const ProfileUI: FC<ProfileUIProps> = ({
   formValue,
   isFormChanged,
   updateUserError,
+  isLoading,
   handleSubmit,
   handleCancel,
   handleInputChange
@@ -84,6 +86,11 @@ export const ProfileUI: FC<ProfileUIProps> = ({
           >
             {updateUserError}
           </p>
+        )}
+        {isLoading && (
+          <div className={commonStyles.preloader}>
+            <Preloader />
+          </div>
         )}
       </>
     </form>

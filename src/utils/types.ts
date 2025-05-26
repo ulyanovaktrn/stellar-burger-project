@@ -1,3 +1,5 @@
+import {Location} from "react-router-dom";
+
 export type TIngredient = {
   _id: string;
   name: string;
@@ -37,4 +39,10 @@ export type TUser = {
   name: string;
 };
 
+export type TFromLocation = { from: string, background?: Location<TFromLocation> };
 export type TTabMode = 'bun' | 'sauce' | 'main';
+
+export type TThunkSliceState = {
+  isLoading: boolean;
+  error: string | null;
+};
