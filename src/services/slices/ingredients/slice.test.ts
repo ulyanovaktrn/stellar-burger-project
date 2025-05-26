@@ -4,7 +4,7 @@ import { TIngredientsSliceState } from './slice';
 import {
   IngredientsActions,
   IngredientsSlice,
-  initialState as ingredientsInitialState
+  ingredientsInitialState
 } from '.';
 
 describe('IngredientsSlice: тесты редьюсеров', () => {

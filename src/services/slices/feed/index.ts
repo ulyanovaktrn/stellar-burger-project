@@ -1,1 +1,1 @@
-export { FeedSlice, FeedActions, initialState } from './slice';
+export { FeedSlice, FeedActions, initialState as feedInitialState } from './slice';

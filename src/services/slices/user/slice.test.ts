@@ -1,7 +1,7 @@
 import { describe, test, expect } from '@jest/globals';
 import { userMock } from '../mock-data/user';
 import { TUserSliceState } from './slice';
-import { UserSlice, UserActions, initialState as userInitialState } from '.';
+import { UserSlice, UserActions, userInitialState } from '.';
 
 describe('UserSlice: тесты редьюсеров', () => {
   const initialState: TUserSliceState = userInitialState;

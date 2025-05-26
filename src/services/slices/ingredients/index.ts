@@ -1,1 +1,1 @@
-export { IngredientsSlice, IngredientsActions, initialState } from './slice';
+export { IngredientsSlice, IngredientsActions, initialState as ingredientsInitialState } from './slice';

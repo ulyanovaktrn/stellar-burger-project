@@ -4,7 +4,7 @@ import { TConstructorBurgerSliceState } from './slice';
 import {
   BurgerConstructorActions,
   BurgerConstructorSlice,
-  initialState as burgerConstructorInitialState
+  burgerConstructorInitialState
 } from '.';
 
 jest.mock('@reduxjs/toolkit', () => ({

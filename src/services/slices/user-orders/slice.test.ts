@@ -1,7 +1,7 @@
 import { describe, test, expect } from '@jest/globals';
 import { feedMock } from '../mock-data/feed';
 import { TUserOrdersSliceState } from './slice';
-import { UserOrdersSlice, UserOrdersActions, initialState as userOrdersInitialState } from './slice';
+import { UserOrdersSlice, UserOrdersActions, userOrdersInitialState } from '.';
 
 describe('UserOrdersSlice: тесты редьюсеров', () => {
   const initialState: TUserOrdersSliceState = userOrdersInitialState;
