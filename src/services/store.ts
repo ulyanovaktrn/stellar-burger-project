@@ -6,8 +6,6 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 
-//const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
-
 export const store = configureStore({
   reducer: RootReducer,
   devTools: process.env.NODE_ENV !== 'production'
