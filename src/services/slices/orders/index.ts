@@ -1,1 +1,1 @@
-export { OrdersSlice, OrdersActions } from './slice';
+export { OrdersSlice, OrdersActions, initialState } from './slice';
