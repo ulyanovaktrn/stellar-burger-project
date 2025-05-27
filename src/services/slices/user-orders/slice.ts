@@ -7,11 +7,11 @@ export const getOrdersThunk = createAsyncThunk<TOrder[]>(
   getOrdersApi
 );
 
-type TUserOrdersSliceState = TThunkSliceState & {
+export type TUserOrdersSliceState = TThunkSliceState & {
   orders: TOrder[];
 };
 
-const initialState: TUserOrdersSliceState = {
+export const initialState: TUserOrdersSliceState = {
   orders: [],
   isLoading: false,
   error: null
@@ -29,7 +29,7 @@ export const UserOrdersSlice = createSlice({
       })
       .addCase(getOrdersThunk.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error.message ?? null;
+        state.error = action.error.message || null;
       })
       .addCase(getOrdersThunk.fulfilled, (state, action) => {
         state.isLoading = false;

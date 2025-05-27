@@ -3,7 +3,7 @@ import {
   RejectedAction,
   isActionPending,
   isActionRejected
-} from '../../utils/slices-checks';
+} from '../../../utils/slices-checks';
 import { TUser, TThunkSliceState } from '@utils-types';
 import {
   TRegisterData,
